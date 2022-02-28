@@ -14,7 +14,8 @@
         <ScrollViewer
             Width="400"
             MinHeight="255"
-            VerticalScrollBarVisibility="Visible">
+            VerticalScrollBarVisibility="Visible"
+            VerticalScrollMode="Auto">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="100" />
