@@ -6,8 +6,10 @@
     xmlns:local="using:UWPToDoApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    d:DesignHeight="500"
+    d:DesignWidth="750"
     winui:BackdropMaterial.ApplyToRootOrPageBackground="True"
-    mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="750">
+    mc:Ignorable="d">
 
     <Page.Resources>
         <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local:ToDo">
@@ -53,67 +55,88 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border x:Name="AppTitleBar"
-                IsHitTestVisible="True"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                Height="32"
-                Grid.Row="0" Margin="12,0,0,0">
+        <Border
+            x:Name="AppTitleBar"
+            Grid.Row="0"
+            Height="32"
+            Margin="12,0,0,0"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            IsHitTestVisible="True">
             <StackPanel Orientation="Horizontal">
-                <Image x:Name="AppFontIcon"
-                    HorizontalAlignment="Left" 
+                <Image
+                    x:Name="AppFontIcon"
+                    Width="16"
+                    Height="16"
+                    HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Source="Assets/Square44x44Logo.png" 
-                    Width="16" 
-                    Height="16"/>
-                <TextBlock x:Name="AppTitle"
-                    Text="Test App Title"
-                    VerticalAlignment="Center"
+                    Source="Assets/Square44x44Logo.png" />
+                <TextBlock
+                    x:Name="AppTitle"
                     Margin="12,0,0,0"
-                    Style="{StaticResource CaptionTextBlockStyle}" />
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="Test App Title" />
             </StackPanel>
         </Border>
-        <Grid Height="60" Grid.Row="1">
-            <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click" HorizontalAlignment="Left"/>
-            <AppBarButton Icon="Setting" Label="Settings" Click="AddButton_Click" HorizontalAlignment="Right"/>
+        <Grid Grid.Row="1" Height="60">
+            <AppBarButton
+                HorizontalAlignment="Left"
+                Click="AddButton_Click"
+                Icon="Add"
+                Label="Add" />
+            <AppBarButton
+                HorizontalAlignment="Right"
+                Click="AddButton_Click"
+                Icon="Setting"
+                Label="Settings" />
         </Grid>
 
-        <Border Height="Auto" Grid.Row="2"
-                    Background="{ThemeResource LayerFillColorDefaultBrush}" 
-                    BorderThickness="1"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
-            <SplitView IsPaneOpen="True" OpenPaneLength="250" DisplayMode="Inline" PaneBackground="Transparent">
+        <Border
+            Grid.Row="2"
+            Height="Auto"
+            Background="{ThemeResource LayerFillColorDefaultBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1">
+            <SplitView
+                DisplayMode="Inline"
+                IsPaneOpen="True"
+                OpenPaneLength="250"
+                PaneBackground="Transparent">
                 <SplitView.Pane>
                     <ListView
-                Grid.Column="0"
-                x:Name="BaseExample"
-                MinHeight="250"
-                HorizontalAlignment="Stretch"
-                IsItemClickEnabled="True"
-                ItemClick="BaseExample_ItemClick"
-                ItemTemplate="{StaticResource ContactListViewTemplate}"
-                SelectionMode="Single" VerticalAlignment="Stretch">
+                        x:Name="BaseExample"
+                        Grid.Column="0"
+                        MinHeight="250"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        IsItemClickEnabled="True"
+                        ItemClick="BaseExample_ItemClick"
+                        ItemTemplate="{StaticResource ContactListViewTemplate}"
+                        SelectionMode="Single">
                         <ListView.Resources>
                             <winui:CommandBarFlyout x:Name="ListViewCommandBarFlyout1" Placement="Right">
                                 <AppBarButton
-                        Icon="Edit"
-                        Label="Edit"
-                        ToolTipService.ToolTip="Edit" />
+                                    Icon="Edit"
+                                    Label="Edit"
+                                    ToolTipService.ToolTip="Edit" />
                                 <AppBarButton
-                        Icon="Delete"
-                        Label="Delete"
-                        ToolTipService.ToolTip="Delete" />
+                                    Icon="Delete"
+                                    Label="Delete"
+                                    ToolTipService.ToolTip="Delete" />
                             </winui:CommandBarFlyout>
                         </ListView.Resources>
                     </ListView>
                 </SplitView.Pane>
 
-                <Border Grid.Column="1" Height="Auto" 
-                    Background="{ThemeResource LayerFillColorDefaultBrush}" 
+                <Border
+                    Grid.Column="1"
+                    Height="Auto"
                     Margin="8,8,8,8"
-                    CornerRadius="8"
+                    Background="{ThemeResource LayerFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                    CornerRadius="8" />
             </SplitView>
         </Border>
 
