@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     winui:BackdropMaterial.ApplyToRootOrPageBackground="True"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="750">
 
     <Page.Resources>
         <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local:ToDo">
@@ -48,52 +48,76 @@
     </Page.Resources>
 
     <Grid>
-        <CommandBar
-            x:Name="CommBar"
-            Margin="23,10,0,0"
-            HorizontalAlignment="Left"
-            Background="Transparent"
-            DefaultLabelPosition="Right"
-            IsOpen="False">
-            <AppBarButton
-                x:Name="AddButton"
-                Click="AddButton_Click"
-                Icon="Add"
-                Label="Add" />
-            <AppBarSeparator />
-            <CommandBar.SecondaryCommands>
-                <AppBarButton Icon="Setting" Label="Settings" />
-            </CommandBar.SecondaryCommands>
-        </CommandBar>
-        <ListView
-            x:Name="BaseExample"
-            Width="253"
-            Margin="24,69,0,341"
-            HorizontalAlignment="Left"
-            BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
-            BorderThickness="1"
-            IsItemClickEnabled="True"
-            ItemClick="BaseExample_ItemClick"
-            ItemTemplate="{StaticResource ContactListViewTemplate}"
-            SelectionMode="Single">
-            <ListView.Resources>
-                <winui:CommandBarFlyout x:Name="ListViewCommandBarFlyout1" Placement="Right">
-                    <AppBarButton
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border x:Name="AppTitleBar"
+                IsHitTestVisible="True"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Height="32"
+                Grid.Row="0" Margin="12,0,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="AppFontIcon"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center"
+                    Source="Assets/Square44x44Logo.png" 
+                    Width="16" 
+                    Height="16"/>
+                <TextBlock x:Name="AppTitle"
+                    Text="Test App Title"
+                    VerticalAlignment="Center"
+                    Margin="12,0,0,0"
+                    Style="{StaticResource CaptionTextBlockStyle}" />
+            </StackPanel>
+        </Border>
+        <Grid Height="60" Grid.Row="1">
+            <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click" HorizontalAlignment="Left"/>
+            <AppBarButton Icon="Setting" Label="Settings" Click="AddButton_Click" HorizontalAlignment="Right"/>
+        </Grid>
+
+        <Border Height="Auto" Grid.Row="2"
+                    Background="{ThemeResource LayerFillColorDefaultBrush}" 
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+            <SplitView IsPaneOpen="True" OpenPaneLength="250" DisplayMode="Inline" PaneBackground="Transparent">
+                <SplitView.Pane>
+                    <ListView
+                Grid.Column="0"
+                x:Name="BaseExample"
+                MinHeight="250"
+                HorizontalAlignment="Stretch"
+                IsItemClickEnabled="True"
+                ItemClick="BaseExample_ItemClick"
+                ItemTemplate="{StaticResource ContactListViewTemplate}"
+                SelectionMode="Single" VerticalAlignment="Stretch">
+                        <ListView.Resources>
+                            <winui:CommandBarFlyout x:Name="ListViewCommandBarFlyout1" Placement="Right">
+                                <AppBarButton
                         Icon="Edit"
                         Label="Edit"
                         ToolTipService.ToolTip="Edit" />
-                    <AppBarButton
+                                <AppBarButton
                         Icon="Delete"
                         Label="Delete"
                         ToolTipService.ToolTip="Delete" />
-                </winui:CommandBarFlyout>
-            </ListView.Resources>
-        </ListView>
-        <Button
-            x:Name="Button1"
-            Margin="512,384,0,0"
-            VerticalAlignment="Top"
-            Content="Button" />
+                            </winui:CommandBarFlyout>
+                        </ListView.Resources>
+                    </ListView>
+                </SplitView.Pane>
+
+                <Border Grid.Column="1" Height="Auto" 
+                    Background="{ThemeResource LayerFillColorDefaultBrush}" 
+                    Margin="8,8,8,8"
+                    CornerRadius="8"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            </SplitView>
+        </Border>
+
+
 
 
     </Grid>

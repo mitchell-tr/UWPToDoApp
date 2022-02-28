@@ -6,88 +6,92 @@
     xmlns:local="using:UWPToDoApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
-    Width="390"
-    Height="Auto"
-    MinHeight="255"
+    d:DesignHeight="432"
+    d:DesignWidth="516"
     winui:BackdropMaterial.ApplyToRootOrPageBackground="True"
     mc:Ignorable="d">
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="80" />
-            <ColumnDefinition Width="Auto" MinWidth="200" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="Auto" MinHeight="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+        <ScrollViewer
+            Width="400"
+            MinHeight="255"
+            VerticalScrollBarVisibility="Visible">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100" />
+                    <ColumnDefinition Width="Auto" MinWidth="200" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" MinHeight="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
 
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            Text="Name"
-            TextWrapping="Wrap" />
-        <TextBox
-            Grid.Row="0"
-            Grid.Column="1"
-            MaxWidth="296"
-            VerticalAlignment="Center" />
-        <TextBlock
-            Grid.Row="1"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            Text="Description"
-            TextWrapping="Wrap" />
-        <TextBox
-            Grid.Row="1"
-            Grid.Column="1"
-            MaxWidth="296"
-            AcceptsReturn="True"
-            TextWrapping="Wrap" />
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Name"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    MaxWidth="296"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Description"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    MaxWidth="296"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap" />
 
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            Text="Priority"
-            TextWrapping="Wrap" />
-        <ComboBox
-            Grid.Row="2"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            SelectedIndex="0">
-            <TextBlock Text="Low" />
-            <TextBlock Text="Medium" />
-            <TextBlock Text="High" />
-        </ComboBox>
-        <TextBlock
-            Grid.Row="3"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            Text="Due Time"
-            TextWrapping="Wrap" />
-        <TimePicker
-            Grid.Row="3"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center" />
-        <TextBlock
-            Grid.Row="4"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            Text="Due Date"
-            TextWrapping="Wrap" />
-        <DatePicker
-            Grid.Row="4"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Priority"
+                    TextWrapping="Wrap" />
+                <ComboBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    SelectedIndex="0">
+                    <TextBlock Text="Low" />
+                    <TextBlock Text="Medium" />
+                    <TextBlock Text="High" />
+                </ComboBox>
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Due Time"
+                    TextWrapping="Wrap" />
+                <TimePicker
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Due Date"
+                    TextWrapping="Wrap" />
+                <DatePicker
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center" />
+            </Grid>
+        </ScrollViewer>
     </Grid>
 
 </Page>

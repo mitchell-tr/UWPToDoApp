@@ -28,12 +28,13 @@ namespace UWPToDoApp
         public MainPage()
         {
             this.InitializeComponent();
-
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            ApplicationView.PreferredLaunchViewSize = new Size(800, 600);
+            var appView = ApplicationView.GetForCurrentView();
+            appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+            appView.SetPreferredMinSize(new Size(800, 300));
 
             Tasks tasks = new Tasks();
             tasks.TaskList.Add("AAAA", new ToDo("Task1", "Description1", Priority.Low, DateTime.Now));
