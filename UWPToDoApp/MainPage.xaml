@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="UWPToDoApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UWPToDoApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    winui:BackdropMaterial.ApplyToRootOrPageBackground="True"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="local:ToDo">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="12,6,0,0"
+                    x:Phase="1"
+                    Style="{ThemeResource BaseTextBlockStyle}"
+                    Text="{x:Bind Name}" />
+                <TextBlock
+                    Grid.Column="2"
+                    Margin="12,0,0,6"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    x:Phase="2"
+                    Style="{ThemeResource CaptionTextBlockStyle}"
+                    Text="{x:Bind Pritority}" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="12,0,0,6"
+                    x:Phase="3"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Text="{x:Bind Description}" />
+            </Grid>
+        </DataTemplate>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <CommandBar
+            x:Name="CommBar"
+            Margin="23,10,0,0"
+            HorizontalAlignment="Left"
+            Background="Transparent"
+            DefaultLabelPosition="Right"
+            IsOpen="False">
+            <AppBarButton
+                x:Name="AddButton"
+                Click="AddButton_Click"
+                Icon="Add"
+                Label="Add" />
+            <AppBarSeparator />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting" Label="Settings" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+        <ListView
+            x:Name="BaseExample"
+            Width="253"
+            Margin="24,69,0,341"
+            HorizontalAlignment="Left"
+            BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+            BorderThickness="1"
+            IsItemClickEnabled="True"
+            ItemClick="BaseExample_ItemClick"
+            ItemTemplate="{StaticResource ContactListViewTemplate}"
+            SelectionMode="Single">
+            <ListView.Resources>
+                <winui:CommandBarFlyout x:Name="ListViewCommandBarFlyout1" Placement="Right">
+                    <AppBarButton
+                        Icon="Edit"
+                        Label="Edit"
+                        ToolTipService.ToolTip="Edit" />
+                    <AppBarButton
+                        Icon="Delete"
+                        Label="Delete"
+                        ToolTipService.ToolTip="Delete" />
+                </winui:CommandBarFlyout>
+            </ListView.Resources>
+        </ListView>
+        <Button
+            x:Name="Button1"
+            Margin="512,384,0,0"
+            VerticalAlignment="Top"
+            Content="Button" />
+
+
+    </Grid>
+
+</Page>
